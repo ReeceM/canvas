@@ -6,6 +6,7 @@ use Canvas\Canvas;
 use Canvas\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Ramsey\Uuid\Uuid;
 
 class UserCommand extends Command
@@ -40,7 +41,7 @@ class UserCommand extends Command
         }
 
         $email = $this->option('email');
-        $password = 'password';
+        $password = Str::random(12);
 
         $user = new User();
         $user->fill([
